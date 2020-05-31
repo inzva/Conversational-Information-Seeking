@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+
+  
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create two equal columns that floats next to each other */
+    .column {
+  float: left;
+  padding: 10px;
+  /* Should be removed. Only for demonstration */
+}
+
+.left, .right {
+  width: 50%;
+  height: 400px; 
+}
+
+.middle {
+  padding: 100px;
+}
+.center {
+  text-align: center;
+
+}
+
+    /* Clear floats after the columns */
+    .row:after {
+      
+      content: "";
+      display: table;
+      clear: both;
+    }
+    
+    </style>
+
+  </head>
+  <body>
+
+    <div class="container">
+        <h3>Enter the question that you want to search</h3>
+         <hr>
+         <form action="" method="post" class="form" role="form">
+          {{ form.csrf_token() }}
+          <div class="row">
+           <div class="form-group col-md-6">
+            {{ wtf.form_field(form.name, class='form-control',
+               placeholder='query') }}
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="row center">
+              <div class="column middle" >
+                <canvas id="line-chart" width="800" height="450"></canvas>
+
+              </div>
+               <div class="column left">
+                   <h3>Answer: {{answer_gen}}.<h3>
+                       <h4>Candidate Text: {{last_can_gen}}<h4>
+                           <h4>Score: {{score_Gen}}<h4></h4>
+                 </div>
+                 <div class="column right" >
+                   <h3>Answer: {{answer_scoring}}.<h3>
+                    <h4>Score: {{score_scoring}}<h4></h4>
+                       <h4>Candidate Text: {{last_can_scoring}}<h4>
+                           
+                 </div>
+
+           
+            </div>
+            
+       
+             </div>
+       
+             </div>
+       
+       
+         </form>
+         <div>
+    
+         </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.js"></script>
+
+    <script>
+      new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+          labels: [1,2,3,4,5,6,7,8,9,10],
+          datasets: [{ 
+              data: {{similarity_results_gen | tojson}},
+              label: "Similarity Generated With Unlabeled Data",
+              borderColor: "#3e95cd",
+              fill: false
+            }, { 
+              data: {{similarity_results_scoring | tojson}},
+              label: "Similarity Generated With Labeled Data",
+              borderColor: "#8e5ea2",
+              fill: false
+            }
+          ]
+        },
+        options: {
+          title: {
+            display: true,
+            text: 'Similarity Results on Labeled and Unlabeled Data'
+          }
+        }
+      });
+    </script>
+  </body>
+{% endblock %}
+
+

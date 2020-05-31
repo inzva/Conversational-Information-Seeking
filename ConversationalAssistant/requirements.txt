@@ -1,0 +1,13 @@
+Flask==1.1.2
+Flask-Bootstrap==3.3.7.1
+Flask-WTF==0.14.3
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+WTForms==2.3.1
+Werkzeug==1.0.1
+click==7.1.2
+dominate==2.5.1
+itsdangerous==1.1.0
+pip==19.0.3
+setuptools==40.8.0
+visitor==0.1.3

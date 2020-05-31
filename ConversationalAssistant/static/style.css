@@ -1,0 +1,13 @@
+#showcase{
+  background-image: url( "images/92e50309-c27a-4b3b-824f-ae461d5aea54.jpg" )
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+  font-weight: bold;
+}

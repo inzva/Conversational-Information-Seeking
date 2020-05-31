@@ -1,0 +1,56 @@
+
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<!--<header class="intro-header" style="background-image: url({{ url_for('static', filename='images/örnek.jpeg') }})
+">   background resmi için-->
+
+
+<!-- Navbar Start -->
+<nav class="navbar navbar-inverse" role="banner">
+    <div class="container">
+
+        <div class="navbar-header">
+
+            <!-- Telefon ekranları için menü butonu -->
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- İsim Soyisim veya Marka İsmi -->
+            <a class="navbar-brand"style="color:#3c2aff;font-weight: bold;">QUERY-ANSWER</a>
+        </div>
+
+        <nav class="collapse navbar-collapse" role="navigation">
+
+        </nav>
+
+    </div>
+</nav>
+
+
+
+<!-- Query-Answer input-->
+<div class="container">
+ <h3>Enter the query that you want to search</h3>
+  <hr>
+  <form action="" method="post" class="form" role="form">
+   {{ form.csrf_token() }}
+   <div class="row">
+    <div class="form-group col-md-6">
+     {{ wtf.form_field(form.name, class='form-control',
+        placeholder='query') }}
+    </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <hr>
+  <p>- MARCO dataset is used.</p>
+  <p><a href="#">inzva team</a></p>
+</div>
+{% endblock %}
