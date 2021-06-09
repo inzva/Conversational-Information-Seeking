@@ -8,6 +8,6 @@ Werkzeug==1.0.1
 click==7.1.2
 dominate==2.5.1
 itsdangerous==1.1.0
-pip==19.0.3
+pip==19.2
 setuptools==40.8.0
 visitor==0.1.3
